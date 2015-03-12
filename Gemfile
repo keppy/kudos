@@ -5,6 +5,7 @@ gem 'rails-api'
 gem 'spring', :group => :development
 gem 'pg'
 gem 'sorcery'
+gem 'puma'
 
 group :production do
   gem 'rails_12factor'
