@@ -7,6 +7,7 @@ gem 'sorcery'
 gem 'puma'
 gem 'factory_girl_rails'
 gem 'pry'
+gem 'active_model_serializers'
 
 group :production do
   gem 'rails_12factor'
