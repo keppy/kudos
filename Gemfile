@@ -2,13 +2,17 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'rails-api'
-gem 'spring', :group => :development
 gem 'pg'
 gem 'sorcery'
 gem 'puma'
 
 group :production do
   gem 'rails_12factor'
+end
+
+group :development do
+  gem 'spring'
+  gem 'compass'
 end
 
 # To use ActiveModel has_secure_password
