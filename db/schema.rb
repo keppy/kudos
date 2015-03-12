@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312015012) do
+ActiveRecord::Schema.define(version: 20150312185812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "orginizations", force: :cascade do |t|
+  create_table "api_keys", force: :cascade do |t|
+    t.string   "access_token"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
@@ -28,11 +34,11 @@ ActiveRecord::Schema.define(version: 20150312015012) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "orginization_id"
+    t.integer  "organization_id"
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
-  add_index "people", ["orginization_id"], name: "index_people_on_orginization_id", using: :btree
+  add_index "people", ["organization_id"], name: "index_people_on_organization_id", using: :btree
 
-  add_foreign_key "people", "orginizations"
+  add_foreign_key "people", "organizations"
 end

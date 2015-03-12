@@ -5,6 +5,8 @@ gem 'rails-api'
 gem 'pg'
 gem 'sorcery'
 gem 'puma'
+gem 'factory_girl_rails'
+gem 'pry'
 
 group :production do
   gem 'rails_12factor'

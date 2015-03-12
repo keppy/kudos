@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class OrginizationTest < ActiveSupport::TestCase
+class ApiKeyTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
