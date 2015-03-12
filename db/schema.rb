@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312013315) do
+ActiveRecord::Schema.define(version: 20150312015012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,11 @@ ActiveRecord::Schema.define(version: 20150312013315) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "orginization_id"
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
+  add_index "people", ["orginization_id"], name: "index_people_on_orginization_id", using: :btree
 
+  add_foreign_key "people", "orginizations"
 end
