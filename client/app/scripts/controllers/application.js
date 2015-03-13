@@ -8,11 +8,9 @@
  * Controller of the kudosApp
  */
 angular.module('kudosApp')
-  .controller('ApplicationCtrl', function ($scope, AuthService) {
-
-    $scope.currentUser = null;
+  .controller('ApplicationCtrl', function ($scope, $rootScope) {
 
     $scope.setCurrentUser = function (user) {
-      $scope.currentUser = user;
+      $rootScope.currentUser = user;
     };
   });

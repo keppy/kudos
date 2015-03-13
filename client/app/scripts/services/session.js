@@ -8,14 +8,18 @@
  * Service in the kudosApp.
  */
 angular.module('kudosApp')
-  .service('Session', function Session() {
-    this.create = function (personId, accessToken) {
-      this.personId = personId;
-      this.accessToken = accessToken;
+  .service('Session', function ($cookieStore) {
+    this.create = function (id) {
+      $cookieStore.put('id', id);
+      this.id = id;
     };
 
     this.destroy = function () {
-      this.personId = null;
-      this.accessToken = null;
+      $cookieStore.put('id', '');
+      this.id = null;
+    };
+
+    this.get = function () {
+      $cookieStore.get('id');
     };
   });

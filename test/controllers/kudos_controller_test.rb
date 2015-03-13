@@ -25,7 +25,7 @@ class KudosControllerTest < ActionController::TestCase
     kudo1 = create(:kudo, reciever: @person)
     kudo2 = create(:kudo, reciever: @person)
     kudo3 = create(:kudo)
-    get :index
+    get :show, id: @person.id, :format => 'json'
 
     assert_response :success
     body = JSON.parse(response.body)

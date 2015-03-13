@@ -6,4 +6,11 @@ class PeopleController < ApplicationController
 
     render :json => people, root: false 
   end
+
+
+  def show
+    person = Person.find(params[:id])
+    render :json => person, root: false
+  end
+
 end

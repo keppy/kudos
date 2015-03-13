@@ -8,13 +8,14 @@ class AuthControllerTest < ActionController::TestCase
   end
 
   test "post creds should login user" do
-    @person = create(:person)
+    organization = create(:organization)
+    person = create(:person, organization: organization)
 
-    post :create, {'person' => {'email' => @person.email, 'password' => 'password'}}, :format => 'json'
+    post :create, {'person' => {'email' => person.email, 'password' => 'password'}}, :format => 'json'
 
     assert_response :success
     body = JSON.parse(response.body)
-    assert_equal body['person_id'], @person.id
+    assert_equal body['id'], person.id
   end
 
 end

@@ -7,8 +7,8 @@ class KudosController < ApplicationController
     end
   end
 
-  def index
-    kudos = Kudo.where(reciever_id: current_user.id)
+  def show
+    kudos = Kudo.where(reciever_id: params[:id])
     render :json => kudos, root: false
   end
 

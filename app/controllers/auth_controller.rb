@@ -1,11 +1,9 @@
 class AuthController < ApplicationController
   def create
-    if @person = login(login_params[:email], login_params[:password])
-      api_key = ApiKey.create()
-      session[:access_token] = api_key.access_token
-      session[:person_id] = @person.id
+    if person = login(login_params[:email], login_params[:password])
+      session[:person_id] = person.id
 
-      render :json => {:person_id => @person.id, :access_token => api_key.access_token}
+      render :json => person, root: false 
     else
       render :json => {:error => "You are not a real person in our system."}, :status => :unauthorized
     end

@@ -1,1 +1,17 @@
-<p>This is the dashboard view.</p>
+<div class="row">
+  <div class="col-lg-6">
+    <h4>Organization:</h4>
+    <h4>{{currentUser.organization.name}}</h4>
+  </div>
+  <div class="col-lg-4 col-lg-offset-2">
+    <h4>User:</h4>
+    <h4>{{currentUser.email}}</h4>
+  </div>
+</div>
+
+<div class="row">
+  <h4>My Kudos:</h4>
+  <div class="kudo" ng-repeat="kudo in kudos">
+    {{kudo}}
+  </div>
+</div>

@@ -15,13 +15,13 @@ angular.module('kudosApp')
       return $http
         .post(BASE_API_URL + '/create', credentials)
         .then(function (res) {
-          Session.create(res.data.person_id, res.data.access_token);
+          Session.create(res.data.id);
           return res.data;
         });
     };
 
     authService.isAuthenticated = function () {
-      return !!Session.personId;
+      return !!Session.id;
     };
 
     return authService;

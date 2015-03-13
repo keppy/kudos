@@ -8,7 +8,7 @@
  * Controller of the kudosApp
  */
 angular.module('kudosApp')
-  .controller('LoginCtrl', function ($scope, $rootScope, AUTH_EVENTS, AuthService, $location) {
+  .controller('LoginCtrl', function ($scope, $rootScope, AUTH_EVENTS, AuthService, $location, Session) {
     $scope.credentials = {
       person: {
         email: '',
@@ -19,7 +19,7 @@ angular.module('kudosApp')
     $scope.login = function (credentials) {
       AuthService.login(credentials).then(function (user) {
         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-        $scope.setCurrentUser(user);
+        Session.create(user.id);
         $location.path('/dashboard');
       }, function () {
         $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
