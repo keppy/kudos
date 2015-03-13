@@ -1,15 +1,15 @@
 class KudosController < ApplicationController
   def create
-    if @kudo = Kudo.create(kudo_params) 
-      render :json => @kudo
+    if kudo = Kudo.create(kudo_params) 
+      render :json => kudo, root: false
     else
       render :json => {:error => "Couldn't send the kudo."}
     end
   end
 
   def index
-    @kudos = Kudo.where(reciever_id: current_user.id)
-    render :json => @kudos
+    kudos = Kudo.where(reciever_id: current_user.id)
+    render :json => kudos, root: false
   end
 
   def kudo_params

@@ -9,4 +9,8 @@ FactoryGirl.define do
     email "willy@wonka.com"
     password "password"
   end
+
+  factory :organization do
+    name "cool org"
+  end
 end
