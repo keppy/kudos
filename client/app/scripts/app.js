@@ -27,7 +27,29 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/dashboard', {
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    notAuthenticated: 'auth-not-authenticated'
+  })
+
+  .constant('BASE_API_URL', 'http://localhost:3000')
+
+  .run(function ($rootScope, AUTH_EVENTS, AuthService) {
+    $rootScope.$on('$routeChangeStart', function (e, next) {
+      if (!AuthService.isAuthenticated()) {
+        e.preventDefault();
+
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+      }
+    });
   });

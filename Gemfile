@@ -8,6 +8,8 @@ gem 'puma'
 gem 'factory_girl_rails'
 gem 'pry'
 gem 'active_model_serializers'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'faker'
 
 group :production do
   gem 'rails_12factor'

@@ -7,7 +7,7 @@ class AuthController < ApplicationController
 
       render :json => {:person_id => @person.id, :access_token => api_key.access_token}
     else
-      render :json => {:error => "You are not a real person in our system."}
+      render :json => {:error => "You are not a real person in our system."}, :status => :unauthorized
     end
   end
 

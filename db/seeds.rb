@@ -1,7 +1,33 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+org1 = Organization.create(name: Faker::Company.name)
+org2 = Organization.create(name: Faker::Company.name)
+org3 = Organization.create(name: Faker::Company.name)
+
+mack = Person.create(email: 'mack@trakstar.com', password: 'password', organization: org1)
+god = Person.create(email: 'god@trakstar.com', password: 'password', organization: org2)
+
+user1 = Person.create(email: Faker::Internet.email, password: 'password', organization: org1)
+user2 = Person.create(email: Faker::Internet.email, password: 'password', organization: org1)
+user3 = Person.create(email: Faker::Internet.email, password: 'password', organization: org1)
+user4 = Person.create(email: Faker::Internet.email, password: 'password', organization: org1)
+user5 = Person.create(email: Faker::Internet.email, password: 'password', organization: org1)
+
+user6 = Person.create(email: Faker::Internet.email, password: 'password', organization: org2)
+user7 = Person.create(email: Faker::Internet.email, password: 'password', organization: org2)
+user8 = Person.create(email: Faker::Internet.email, password: 'password', organization: org2)
+user9 = Person.create(email: Faker::Internet.email, password: 'password', organization: org2)
+user10 = Person.create(email: Faker::Internet.email, password: 'password', organization: org2)
+
+kudo1 = Kudo.create(sender: user1, reciever: user2, content: Faker::Hacker.say_something_smart)
+kudo2 = Kudo.create(sender: user2, reciever: user3, content: Faker::Hacker.say_something_smart)
+kudo3 = Kudo.create(sender: user1, reciever: mack, content: Faker::Hacker.say_something_smart)
+kudo4 = Kudo.create(sender: user4, reciever: mack, content: Faker::Hacker.say_something_smart)
+kudo5 = Kudo.create(sender: user2, reciever: mack, content: Faker::Hacker.say_something_smart)
+kudo6 = Kudo.create(sender: user5, reciever: mack, content: Faker::Hacker.say_something_smart)
+
+kudo7 = Kudo.create(sender: user6, reciever: god, content: Faker::Hacker.say_something_smart)
+kudo8 = Kudo.create(sender: user6, reciever: god, content: Faker::Hacker.say_something_smart)
+kudo9 = Kudo.create(sender: user10, reciever: user7, content: Faker::Hacker.say_something_smart)
+kudo10 = Kudo.create(sender: user8, reciever: god, content: Faker::Hacker.say_something_smart)
+kudo11 = Kudo.create(sender: user6, reciever: god, content: Faker::Hacker.say_something_smart)
+kudo12 = Kudo.create(sender: user9, reciever: user6, content: Faker::Hacker.say_something_smart)
+kudo13 = Kudo.create(sender: user9, reciever: user10, content: Faker::Hacker.say_something_smart)
