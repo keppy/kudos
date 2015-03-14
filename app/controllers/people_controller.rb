@@ -3,7 +3,7 @@ class PeopleController < ApplicationController
     person = Person.find(params[:id])
     people_table = Person.arel_table
     people = Person.where(people_table[:organization_id].eq(person.organization.id).and(
-                          people_table[:id]             .not_eq(current_user.id)))
+                          people_table[:id]             .not_eq(person.id)))
 
     render :json => people, root: false 
   end

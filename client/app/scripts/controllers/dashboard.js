@@ -16,9 +16,9 @@ angular.module('kudosApp')
     $scope.selectedPerson = null;
     $scope.kudo = {
       kudo: {
-        sender_id = null;
-        reciever_id = null;
-        content = null;
+        sender_id: null,
+        reciever_id: null,
+        content: null
       }
     };
 

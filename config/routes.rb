@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   post 'create' => 'auth#create'
   resources :kudos, :only => [:create, :show]
-  resources :people, :only => [:index, :show]
+  get 'me/:id' => 'people#show'
+  get 'people/:id' => 'people#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

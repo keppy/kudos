@@ -14,18 +14,18 @@ angular.module('kudosApp')
 
       personService.me = function (id) {
         return $http
-          .get(BASE_API_URL + '/people/' + id)
+          .get(BASE_API_URL + '/me/' + id)
           .then(function (res) {
             return res.data;
           });
       };
 
-      personService.index = function () {
+      personService.index = function (id) {
         return $http
-          .get(BASE_API_URL + '/people')
+          .get(BASE_API_URL + '/people/' + id)
           .then(function (res) {
             return res.data;
-          };
+          });
       };
 
 
