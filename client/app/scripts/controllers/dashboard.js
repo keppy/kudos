@@ -9,13 +9,34 @@
  */
 angular.module('kudosApp')
   .controller('DashboardCtrl', function ($scope, Person, Session, $cookieStore, Kudos) {
-    var promise = Person.me($cookieStore.get('id'));
-    promise.then(function (res) {
+    var mePromise = Person.me($cookieStore.get('id'));
+    var kudosPromise = Kudos.index($cookieStore.get('id'));
+    var peoplePromise = Person.index($cookieStore.get('id'));
+
+    $scope.selectedPerson = null;
+    $scope.kudo = {
+      kudo: {
+        sender_id = null;
+        reciever_id = null;
+        content = null;
+      }
+    };
+
+    $scope.createKudo = function(kudo) {
+      $scope.kudo.kudo.sender_id = $scope.currentUser.id;
+      $scope.kudo.kudo.reciever_id = $scope.selectedPerson.id;
+      Kudos.create(kudo);
+    };
+
+    mePromise.then(function (res) {
       $scope.currentUser = res;
     });
 
-    var kudosPromise = Kudos.index($cookieStore.get('id'));
     kudosPromise.then(function (res) {
       $scope.kudos = res;
+    });
+
+    peoplePromise.then(function (res) {
+      $scope.people = res;
     });
   });

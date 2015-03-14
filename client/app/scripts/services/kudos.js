@@ -18,7 +18,15 @@ angular.module('kudosApp')
           .then(function (res) {
             return res.data;
           });
-    };
+      };
+
+      kudosService.create = function(kudo) {
+        return $http
+          .post(BASE_API_URL + '/kudos', kudo)
+          .then(function (res) {
+            return res.data;
+          });
+      };
 
     return kudosService;
   });
