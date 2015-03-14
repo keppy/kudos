@@ -10,27 +10,31 @@
 </div>
 
 <div class="row">
-  <h4>Your Kudos:</h4>
-  <div class="kudo" ng-repeat="kudo in kudos">
+  <h4 class="col-sm-12">Your Kudos:</h4>
+  <div class="kudo col-sm-8" ng-repeat="kudo in kudos">
     <h5>From: {{kudo.sender}}</h5>
     <p>{{kudo.content}}</p>
   </div>
 </div>
 
-<div class="row">
-  <form name="kudosForm"
-          ng-submit="createKudo(kudo)" novalidate>
+<form name="kudosForm"
+      ng-submit="createKudo(kudo)" novalidate>
+  <div class="row">
     <div class="form-group">
-      <label class="col-sm-2" for="sendTo">Send kudo to:</label>
+      <label class="col-sm-3" for="sendTo">Send kudo to:</label>
       <select class="col-sm-4" 
-             ng-model="selectedPerson">
-        <option ng-repeat="person in people">{{person.email}}</option>
+        ng-model="selectedPerson"
+        ng-options="person.email for person in people">
+        <option value="">-- choose someone awesome --</option>
       </select>
     </div>
+  </div>
+  <div clas="row">
     <div class="form-group">
       <label for="content">Kudo content (why are you giving this kudo?):</label>
       <textarea class="form-control" rows="3" 
         ng-model="kudo.kudo.content"></textarea>
       <button class="btn btn-primary" type="submit">Send kudo!</button>
     </div>
-</div>
+  </div>
+</form>
