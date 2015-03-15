@@ -3,7 +3,9 @@ org2 = Organization.create(name: Faker::Company.name)
 org3 = Organization.create(name: Faker::Company.name)
 
 mack = Person.create(email: 'mack@trakstar.com', password: 'password', organization: org1)
-god = Person.create(email: 'god@trakstar.com', password: 'password', organization: org2)
+god = Person.create(email: 'god@trakstar.com', password: 'password', organization: org1)
+james = Person.create(email: 'james@gmail.com', password: 'password', organization: org2)
+willy = Person.create(email: 'willy@gmail.com', password: 'password', organization: org2)
 
 user1 = Person.create(email: Faker::Internet.email, password: 'password', organization: org1)
 user2 = Person.create(email: Faker::Internet.email, password: 'password', organization: org1)

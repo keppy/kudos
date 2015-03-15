@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row header">
   <div class="col-lg-6">
     <h4>Your organization:</h4>
     <h4>{{currentUser.organization.name}}</h4>
@@ -9,17 +9,25 @@
   </div>
 </div>
 
-<div class="row">
-  <h4 class="col-sm-12">Your Kudos:</h4>
-  <div class="kudo col-sm-8" ng-repeat="kudo in kudos">
-    <h5>From: {{kudo.sender}}</h5>
-    <p>{{kudo.content}}</p>
+<div class="row">  
+  <div class="col-lg-3 col-lg-offset-8">
+    <button class="btn btn-primary" ng-click="logOut()">Log out</button>
+  </div>
+  <div class="col-sm-11 col-sm-offset-1">
+    <h4 class="">Your Kudos:</h4>
+    <div class="kudo col-sm-8 header bg-primary" ng-repeat="kudo in kudos">
+      <h5>From: {{kudo.sender}}</h5>
+      <p>{{kudo.content}}</p>
+    </div>
   </div>
 </div>
 
 <form name="kudosForm"
       ng-submit="createKudo(kudo)" novalidate>
   <div class="row">
+    <div class="form-group col-sm-12">
+      <label class="bg-success col-sm-3">Available Kudos: {{currentUser.kudos_available}}</label>
+    </div>
     <div class="form-group">
       <label class="col-sm-3" for="sendTo">Send kudo to:</label>
       <select class="col-sm-4" 
@@ -32,9 +40,12 @@
   <div clas="row">
     <div class="form-group">
       <label for="content">Kudo content (why are you giving this kudo?):</label>
-      <textarea class="form-control" rows="3" 
+      <textarea class="form-control col-lg-11" rows="3" 
+        name="content"
         ng-model="kudo.kudo.content"></textarea>
-      <button class="btn btn-primary" type="submit">Send kudo!</button>
+    <div class="form-group">
+      <button class="kudo-btn form-control btn btn-primary" type="submit">Send kudo!</button>
+    </div>
     </div>
   </div>
 </form>

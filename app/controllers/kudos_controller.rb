@@ -1,9 +1,12 @@
 class KudosController < ApplicationController
   def create
-    if kudo = Kudo.create(kudo_params) 
+    person = Person.find(kudo_params[:sender_id])
+    if kudo = Kudo.create(kudo_params) and person.kudos_available > 0
+      person.decrement(:kudos_available, 1)
+      person.save()
       render :json => kudo, root: false
     else
-      render :json => {:error => "Couldn't send the kudo."}
+      render :json => {:error => "Couldn't send the kudo."}, :status => :unauthorized
     end
   end
 
