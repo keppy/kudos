@@ -10,6 +10,7 @@ gem 'pry'
 gem 'active_model_serializers'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'faker'
+gem 'whenever', :require => false
 
 group :production do
   gem 'rails_12factor'

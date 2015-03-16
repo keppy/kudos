@@ -7,6 +7,7 @@ class Person < ActiveRecord::Base
   def self.refil_kudos
     Person.all.each do |person|
       person.kudos_available = 3
+      person.save()
     end
   end
 end
